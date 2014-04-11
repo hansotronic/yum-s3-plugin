@@ -137,7 +137,7 @@ def createBotoGrabber():
             # See http://docs.python.org/library/urlparse.html
             self.baseurl = urlparse(baseurl)
             self.bucket_name = re.match('(.*)\.s3.*\.amazonaws\.com', self.baseurl[1]).group(1)
-            self.key_prefix = self.baseurl[2][1:].strip('/')
+            self.key_prefix = self.baseurl[2][1:].rstrip('/')
 
         def _handle_s3(self, awsAccessKey, awsSecretKey):
             self.s3 = boto.connect_s3(awsAccessKey, awsSecretKey)
